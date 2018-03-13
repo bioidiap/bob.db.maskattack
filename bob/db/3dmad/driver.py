@@ -8,12 +8,12 @@
 
 import os
 import sys
-from bob.db.base.driver import Interface as BaseInterface
+from bob.db.driver import Interface as BaseInterface
 
 class Interface(BaseInterface):
 
   def name(self):
-    return 'maskattack'
+    return '3dmad'
 
   def version(self):
     import pkg_resources  # part of setuptools

@@ -38,7 +38,7 @@ def checkfiles(args):
   # report
   output = sys.stdout
   if args.selftest:
-    from bob.db.base.utils import null
+    from bob.db.utils import null
     output = null()
 
   if bad:
@@ -67,12 +67,12 @@ def add_command(subparsers):
     protocols = [k.name for k in db.protocols()]
     clients = [k.id for k in db.clients()]
 
-  parser.add_argument('-d', '--directory', dest="directory", default=None,   help="if given, this path will be prepended to every entry checked (defaults to '%(default)s')")
-  parser.add_argument('-e', '--extension', dest="extension", default=None,   help="if given, this extension will be appended to every entry checked (defaults to '%(default)s')")
-  parser.add_argument('-x', '--protocol',  dest="protocol",  default=None,   help="if given, this value will limit the check for files to those for a given protocol. (defaults to '%(default)s')", choices=protocols)
-  parser.add_argument('-p', '--purposes',  dest="purposes",  default=None,   help="if given, this value will limit the check for files to those for a given purpose. (defaults to '%(default)s')", choices=db.purposes())
-  parser.add_argument('-i', '--client_ids',dest="client_ids",default=None,   help="if given, this value will limit the check for files to those of a given client id. (defaults to '%(default)s')", choices=clients)
-  parser.add_argument('-s', '--sets',      dest="sets",      default=None,   help="if given, this value will limit the check for files to those for a given set. (defaults to '%(default)s')", choices=db.sets())
+  parser.add_argument('-d', '--directory', dest="directory", default='',   help="if given, this path will be prepended to every entry checked (defaults to '%(default)s')")
+  parser.add_argument('-e', '--extension', dest="extension", default='',   help="if given, this extension will be appended to every entry checked (defaults to '%(default)s')")
+  parser.add_argument('-x', '--protocol',  dest="protocol",  default='',   help="if given, this value will limit the check for files to those for a given protocol. (defaults to '%(default)s')", choices=protocols)
+  parser.add_argument('-p', '--purposes',  dest="purposes",  default='',   help="if given, this value will limit the check for files to those for a given purpose. (defaults to '%(default)s')", choices=db.purposes())
+  parser.add_argument('-i', '--client_ids',dest="client_ids",default='',   help="if given, this value will limit the check for files to those of a given client id. (defaults to '%(default)s')", choices=clients)
+  parser.add_argument('-s', '--sets',      dest="sets",      default='',   help="if given, this value will limit the check for files to those for a given set. (defaults to '%(default)s')", choices=db.sets())
   parser.add_argument('-c', '--classes',   dest="classes",   default=None, help="if given, this value will limit the check for files to those for a given class. (defaults to '%(default)s')", choices=('client', 'impostor'))
   parser.add_argument('--self-test', dest="selftest", default=False, action='store_true', help=SUPPRESS)
 

@@ -51,9 +51,9 @@ class Database(SQLiteDatabase):
 
     self.assert_validity()
     VALID_SETS = self.sets()
-    sets_ = self.check_parameters_for_validity(sets, "set", VALID_SETS, VALID_SETS)
+    sets_ = self.check_validity(sets, "set", VALID_SETS, VALID_SETS)
     # List of the clients
-    q = self.query(Client).filter(Client.set.in_(sets_)).\
+    q = self.session.query(Client).filter(Client.set.in_(sets_)).\
           order_by(Client.id)
     return list(q)
     
@@ -61,36 +61,37 @@ class Database(SQLiteDatabase):
     """Returns True if we have a client with a certain integer identifier"""
 
     self.assert_validity()
-    return self.query(Client).filter(Client.id==id).count() != 0
+    return self.session.query(Client).filter(Client.id==id).count() != 0
 
   def protocols(self):
     """Returns all protocol objects.
     """
 
     self.assert_validity()
-    return list(self.query(Protocol))
+    return list(self.session.query(Protocol))
 
   def has_protocol(self, name):
     """Tells if a certain protocol is available"""
 
     self.assert_validity()
-    return self.query(Protocol).filter(Protocol.name==name).count() != 0
+    return self.session.query(Protocol).filter(Protocol.name==name).count() != 0
 
   def protocol(self, name):
     """Returns the protocol object in the database given a certain name. Raises
     an error if that does not exist."""
 
     self.assert_validity()
-    return self.query(Protocol).filter(Protocol.name==name).one()
+    return self.session.query(Protocol).filter(Protocol.name==name).one()
 
   def protocol_names(self):
     """Returns all registered protocol names"""
+
     return [str(p.name) for p in self.protocols()]
 
   def protocol_purposes(self):
     """Returns all registered protocol purposes"""
 
-    return list(self.query(ProtocolPurpose))
+    return list(self.session.query(ProtocolPurpose))
 
   def purposes(self):
     """Returns the list of allowed purposes"""
@@ -100,19 +101,19 @@ class Database(SQLiteDatabase):
   def fileID_to_clientID(self,id):
     """Returns the client ID of the given file ID"""
     
-    q = self.query(File).filter(File.id==id)    
+    q = self.session.query(File).filter(File.id==id)    
     return q[0].client_id
     
   def fileID_to_session(self,id):
     """Returns the client ID of the given file ID"""
     
-    q = self.query(File).filter(File.id==id)    
+    q = self.session.query(File).filter(File.id==id)    
     return q[0].session
     
   def fileID_to_shot(self,id):
     """Returns the client ID of the given file ID"""
     
-    q = self.query(File).filter(File.id==id)    
+    q = self.session.query(File).filter(File.id==id)    
     return q[0].shot
 
   def objects(self, protocol=None, purposes=None, client_ids=None, sets=None,
@@ -148,30 +149,21 @@ class Database(SQLiteDatabase):
     Returns: A list of files which have the given properties.
     """
 
-
-    VALID_PROTOCOLS = self.protocol_names()
-    protocol = self.check_parameters_for_validity(
-        protocol, "protocol", VALID_PROTOCOLS, VALID_PROTOCOLS)
-
-
-    #protocol = self.check_parameters_for_validity(protocol, "protocol", self.protocol_names())
+    protocol = self.check_parameters_for_validity(protocol, "protocol", self.protocol_names())
     purposes = self.check_parameters_for_validity(purposes, "purpose", self.purposes())
     sets = self.check_parameters_for_validity(sets, "set", self.sets())
     classes = self.check_parameters_for_validity(classes, "class", ('client', 'impostor'))
-    #client_ids = self.check_parameters_for_validity(client_ids, "client_id", range(1,18))
-
-    VALID_IDS = list(range(1, 18))
-    client_ids = self.check_parameters_for_validity(client_ids, "client_id", VALID_IDS, VALID_IDS)
+    client_ids = self.check_parameters_for_validity(client_ids, "client_id", range(1,18))
 
     import collections
     if(client_ids is None):
-      client_ids = VALID_IDS
+      client_ids = ()
     elif(not isinstance(client_ids,collections.Iterable)):
       client_ids = (client_ids,)
 
     # Now query the database
-    q = self.query(File).join(Client).join((ProtocolPurpose, File.protocolPurposes)).join(Protocol).\
-            filter(and_(Protocol.name.in_(protocol), ProtocolPurpose.set.in_(sets), ProtocolPurpose.purpose.in_(purposes), Client.id.in_(client_ids)))
+    q = self.session.query(File).join(Client).join((ProtocolPurpose, File.protocolPurposes)).join(Protocol).\
+            filter(and_(Protocol.name.in_(protocol), ProtocolPurpose.set.in_(sets), ProtocolPurpose.purpose.in_(purposes)))
             
     if(('probeMask' in purposes) or ('probeReal' in purposes)):
         if(classes == 'client'):

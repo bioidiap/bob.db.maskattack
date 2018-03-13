@@ -21,7 +21,7 @@ def add_clients(session, datadir, verbose):
       set = 'dev'
     else:
       set = 'test'
-    if verbose: print( "Adding client %d on '%s' set..." % (id, set))
+    if verbose: print "Adding client %d on '%s' set..." % (id, set)
     session.add(Client(id, set))
 
 def add_files(session, datadir, verbose):
@@ -34,7 +34,7 @@ def add_files(session, datadir, verbose):
       client_id = int(tokens[0])
       session_ = int(tokens[1])
       shot = int(tokens[2])
-      if verbose: print( "Adding filename '%s' ..." % (path,))
+      if verbose: print "Adding filename '%s' ..." % (path,)
       session.add(File(client_id, path, session_, shot))
 
 def add_protocols(session, verbose):
@@ -43,7 +43,7 @@ def add_protocols(session, verbose):
   protocol_name = 'verification'
   p = Protocol(protocol_name)
   # Add protocol
-  if verbose: print( "Adding protocol %s..." % (protocol_name))
+  if verbose: print "Adding protocol %s..." % (protocol_name)
   session.add(p)
   session.flush()
   session.refresh(p)  
@@ -66,7 +66,7 @@ def add_protocols(session, verbose):
       session_list = [key-3]
       
     pu = ProtocolPurpose(p.id, purpose[0], purpose[1], session_list.__str__())
-    if verbose: print( " Adding protocol purpose ('%s','%s')..." % (purpose[0], purpose[1]))
+    if verbose: print " Adding protocol purpose ('%s','%s')..." % (purpose[0], purpose[1])
     session.add(pu)
     session.flush()
     session.refresh(pu)
@@ -76,14 +76,14 @@ def add_protocols(session, verbose):
       q = session.query(File).join(Client).filter(Client.set == client_set).\
             filter(File.session == sid).order_by(File.id)
       for k in q:
-        if verbose: print( " Adding protocol file '%s'..." % (k.path))
+        if verbose: print " Adding protocol file '%s'..." % (k.path)
         #pu.fixfiles.append(k)
         pu.files.append(k)
   
   protocol_name = 'classification'
   p = Protocol(protocol_name)
   # Add protocol
-  if verbose: print( "Adding protocol %s..." % (protocol_name))
+  if verbose: print "Adding protocol %s..." % (protocol_name)
   session.add(p)
   session.flush()
   session.refresh(p)  
@@ -115,7 +115,7 @@ def add_protocols(session, verbose):
       session_list = [3]
       
     pu = ProtocolPurpose(p.id, purpose[0], purpose[1], session_list.__str__())
-    if verbose: print( " Adding protocol purpose ('%s','%s')..." % (purpose[0], purpose[1]))
+    if verbose: print " Adding protocol purpose ('%s','%s')..." % (purpose[0], purpose[1])
     session.add(pu)
     session.flush()
     session.refresh(pu)
@@ -125,7 +125,7 @@ def add_protocols(session, verbose):
       q = session.query(File).join(Client).filter(Client.set == client_set).\
             filter(File.session == sid).order_by(File.id)
       for k in q:
-        if verbose: print( " Adding protocol file '%s'..." % (k.path))
+        if verbose: print " Adding protocol file '%s'..." % (k.path)
         #pu.fixfiles.append(k)
         pu.files.append(k)
 

@@ -94,24 +94,24 @@ class MaskAttackDatabaseTest(unittest.TestCase):
 
   def test04_manage_dumplist_1(self):
 
-    from bob.db.base.script.dbmanage import main
+    from bob.db.script.dbmanage import main
 
     self.assertEqual(main('maskattack dumplist --self-test'.split()), 0)
 
   def test05_manage_dumplist_2(self):
     
-    from bob.db.base.script.dbmanage import main
+    from bob.db.script.dbmanage import main
 
-    self.assertEqual(main('maskattack dumplist --class=impostor --protocol=verification --self-test'.split()), 0)
+    self.assertEqual(main('maskattack dumplist --class=attack --group=devel --support=hand --protocol=highdef --self-test'.split()), 0)
 
   def test06_manage_dumplist_client(self):
     
-    from bob.db.base.script.dbmanage import main
+    from bob.db.script.dbmanage import main
 
     self.assertEqual(main('maskattack dumplist --client=11 --self-test'.split()), 0)
 
   def test07_manage_checkfiles(self):
 
-    from bob.db.base.script.dbmanage import main
+    from bob.db.script.dbmanage import main
 
     self.assertEqual(main('maskattack checkfiles --self-test'.split()), 0)

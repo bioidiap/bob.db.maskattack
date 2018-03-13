@@ -1,4 +1,4 @@
-{% set name = 'bob.db.3dmad' %}
+{% set name = 'bob.db.maskattack' %}
 {% set project_dir = environ.get('RECIPE_DIR') + '/..' %}
 
 package:

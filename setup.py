@@ -13,10 +13,10 @@ install_requires = load_requirements()
 version = open("version.txt").read().rstrip()
 
 setup(
-    name='bob.db.3dmad',
+    name='bob.db.maskattack',
     version=version,
     description="Bob Database interface for the 3DMAD database",
-    keywords=['bob', 'database', '3dmad'],
+    keywords=['bob', 'database', 'mask'],
     url='http://gitlab.idiap.ch/heusch/bob.db.fargo',
     license='GPLv3',
     author='Guillaume Heusch',
@@ -36,7 +36,7 @@ setup(
         ],
         
         'bob.db': [
-          '3dmad = bob.db.3dmad.driver:Interface',
+          'maskattack = bob.db.maskattack.driver:Interface',
         ],
 
         'bob.bio.database' : [

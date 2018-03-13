@@ -2,17 +2,17 @@
 .. Mon 12 Mar 16:23:52 CET 2018
 
 .. image:: https://img.shields.io/badge/docs-stable-yellow.svg
-   :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.3dmad/stable/index.html
+   :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.maskattack/stable/index.html
 .. image:: https://img.shields.io/badge/docs-latest-orange.svg
-   :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.3dmad/master/index.html
-.. image:: https://gitlab.idiap.ch/bob/bob.db.3dmad/badges/master/build.svg
-   :target: https://gitlab.idiap.ch/bob/bob.db.3dmad/commits/master
-.. image:: https://gitlab.idiap.ch/bob/bob.db.3dmad/badges/master/coverage.svg
-   :target: https://gitlab.idiap.ch/bob/bob.db.3dmad/commits/master
+   :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.maskattack/master/index.html
+.. image:: https://gitlab.idiap.ch/bob/bob.db.maskattack/badges/master/build.svg
+   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack/commits/master
+.. image:: https://gitlab.idiap.ch/bob/bob.db.maskattack/badges/master/coverage.svg
+   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack/commits/master
 .. image:: https://img.shields.io/badge/gitlab-project-0000c0.svg
-   :target: https://gitlab.idiap.ch/bob/bob.db.3dmad
-.. image:: https://img.shields.io/pypi/v/bob.db.3dmad.svg
-   :target: https://pypi.python.org/pypi/bob.db.3dmad
+   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack
+.. image:: https://img.shields.io/pypi/v/bob.db.maskattack.svg
+   :target: https://pypi.python.org/pypi/bob.db.maskattack
 
 
 =========
@@ -31,7 +31,7 @@ Installation
 Complete Bob's `installation`_ instructions. Then, to install this package,
 run::
 
-  $ conda install bob.db.3dmad
+  $ conda install bob.db.maskattack
 
 
 Contact
