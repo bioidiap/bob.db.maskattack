@@ -85,9 +85,9 @@ class File(Base, BaseFile):
 
   def is_real(self):
     if self.session == 3:
-      return True
-    else:
       return False
+    else:
+      return True
 
   def videofile(self, directory=None):
     """Returns the path to the database video file for this object
