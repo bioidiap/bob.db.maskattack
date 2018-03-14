@@ -83,6 +83,27 @@ class File(Base, BaseFile):
     self.session = session
     self.shot = shot
 
+  def is_real(self):
+    if self.session == 3:
+      return True
+    else:
+      return False
+
+  def videofile(self, directory=None):
+    """Returns the path to the database video file for this object
+    Keyword parameters:
+    directory: An optional directory name that will be prefixed to the returned result.
+
+    Returns a string containing the video file path.
+    """
+    return self.make_path(directory, '.avi')
+
+  def facefile(self, directory=''):
+    return self.make_path(directory, '.face')
+
+  def eyes(self, directory=None):
+    coords = numpy.loadtxt(self.facefile(directory), delimiter=',')
+
   def __repr__(self):
     return "File('%s')" % self.path
 
@@ -123,7 +144,7 @@ class File(Base, BaseFile):
       [optional] The extension of the filename - this will control the type of
       output and the codec for saving the input blob.
     """
-    f =  bob.io.HDF5File(self.make_path(directory, extension))    
+    f =  bob.io.base.HDF5File(self.make_path(directory, extension))    
     color_image = f.read('Color_Data')
     if isdepth:
         depth_image = f.read('Depth_Data')
@@ -214,3 +235,4 @@ class ProtocolPurpose(Base):
 
   def __repr__(self):
     return "ProtocolPurpose('%s', '%s', '%s')" % (self.protocol.name, self.set, self.purpose)
+

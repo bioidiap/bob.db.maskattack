@@ -116,7 +116,7 @@ class Database(SQLiteDatabase):
     return q[0].shot
 
   def objects(self, protocol=None, purposes=None, client_ids=None, sets=None,
-      classes=None):
+      classes=None, groups=None):
     """Returns a set of filenames for the specific query by the user.
     
     Keyword Parameters:

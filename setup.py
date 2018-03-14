@@ -33,6 +33,7 @@ setup(
 
     entry_points = {
         'console_scripts': [
+          'make_sequences.py = bob.db.maskattack.scripts.make_color_videos:main'
         ],
         
         'bob.db': [
