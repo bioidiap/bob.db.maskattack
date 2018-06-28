@@ -30,8 +30,14 @@ setup(
     zip_safe=False,
 
     install_requires=install_requires,
+ 
+    namespace_packages=[
+      'bob',
+      'bob.db',
+    ],
 
     entry_points = {
+      
         'console_scripts': [
           'make_sequences.py = bob.db.maskattack.scripts.make_color_videos:main'
         ],
@@ -39,11 +45,7 @@ setup(
         'bob.db': [
           'maskattack = bob.db.maskattack.driver:Interface',
         ],
-
-        'bob.bio.database' : [
-        ],
-
-      },
+    },
 
     classifiers=[
       'Framework :: Bob',
