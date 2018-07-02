@@ -110,7 +110,6 @@ def main(user_input=None):
                                   original_extension='.hdf5')
   objs = db.objects()
 
-  
   # if we are on a grid environment, just find what I have to process.
   #if os.environ.has_key('SGE_TASK_ID'):
   try:
