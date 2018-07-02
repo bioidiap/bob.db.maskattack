@@ -74,7 +74,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'bob.db.3dmad'
+project = u'bob.db.maskattack'
 import time
 copyright = u'%s, Idiap Research Institute' % time.strftime('%Y')
 
@@ -126,7 +126,7 @@ pygments_style = 'sphinx'
 
 # Some variables which are useful for generated material
 project_variable = project.replace('.', '_')
-short_description = u''
+short_description = u'Bob Database interface for the 3DMAD database'
 owner = [u'Idiap Research Institute']
 
 
