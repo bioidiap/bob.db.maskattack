@@ -20,7 +20,7 @@
 =========
 
 This package is part of the signal-processing and machine learning toolbox
-Bob_. It contains an interface for the evaluation protocols of the FARGO 
+Bob_. It contains an interface for the evaluation protocols of the 3DMAD 
 Database. Notice this package does not contain the raw data files from this
 dataset.
 
