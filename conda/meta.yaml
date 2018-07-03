@@ -39,7 +39,6 @@ requirements:
     - sqlalchemy
     - numpy
     - docopt
-    - bob.ip.draw
     - gridtk
 
 test:
