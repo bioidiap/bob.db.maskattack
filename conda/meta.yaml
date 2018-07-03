@@ -30,6 +30,7 @@ requirements:
     - bob.db.base
     - bob.io.base
     - bob.io.video
+    - gridtk
   run:
     - python
     - setuptools
@@ -56,6 +57,7 @@ test:
     - coverage
     - sphinx
     - sphinx_rtd_theme
+    - gridtk
 
 about:
   home: https://www.idiap.ch/software/bob/
