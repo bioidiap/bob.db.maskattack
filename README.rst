@@ -1,14 +1,14 @@
 .. vim: set fileencoding=utf-8 :
 .. Mon 12 Mar 16:23:52 CET 2018
 
-.. image:: https://img.shields.io/badge/docs-stable-yellow.svg
-   :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.maskattack/stable/index.html
+.. image:: https://img.shields.io/badge/docs-v0.0.2-yellow.svg
+   :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.maskattack/v0.0.2/index.html
 .. image:: https://img.shields.io/badge/docs-latest-orange.svg
    :target: https://www.idiap.ch/software/bob/docs/bob/bob.db.maskattack/master/index.html
-.. image:: https://gitlab.idiap.ch/bob/bob.db.maskattack/badges/master/build.svg
-   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack/commits/master
-.. image:: https://gitlab.idiap.ch/bob/bob.db.maskattack/badges/master/coverage.svg
-   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack/commits/master
+.. image:: https://gitlab.idiap.ch/bob/bob.db.maskattack/badges/v0.0.2/build.svg
+   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack/commits/v0.0.2
+.. image:: https://gitlab.idiap.ch/bob/bob.db.maskattack/badges/v0.0.2/coverage.svg
+   :target: https://gitlab.idiap.ch/bob/bob.db.maskattack/commits/v0.0.2
 .. image:: https://img.shields.io/badge/gitlab-project-0000c0.svg
    :target: https://gitlab.idiap.ch/bob/bob.db.maskattack
 .. image:: https://img.shields.io/pypi/v/bob.db.maskattack.svg
