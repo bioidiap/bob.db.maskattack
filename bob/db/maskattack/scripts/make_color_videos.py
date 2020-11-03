@@ -44,7 +44,6 @@ import math
 import bob.io.base
 import bob.io.video
 import bob.db.maskattack
-import bob.ip.draw
 
 import bob.core
 logger = bob.core.log.setup("bob.db.maskattack")
